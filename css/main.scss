@@ -1,1 +1,79 @@
-@import "meyer-reset";
+@import 'meyer-reset';
+@import 'colors';
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin border-top-radius($radius) {
+  -webkit-border-radius: $radius $radius 0 0;
+     -moz-border-radius: $radius $radius 0 0;
+      -ms-border-radius: $radius $radius 0 0;
+          border-radius: $radius $radius 0 0;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-radius: 0 0 $radius $radius;
+     -moz-border-radius: 0 0 $radius $radius;
+      -ms-border-radius: 0 0 $radius $radius;
+          border-radius: 0 0 $radius $radius;
+}
+
+html, body{
+  height: 100%;
+  margin: 0px;
+}
+body{
+  background-color: $base;
+  color: $fontbase;
+}
+.card{
+  max-width: 600px;
+  margin: 0 auto;
+  table, th, td{
+    border: 1px solid #999;
+    padding: 5px;
+  }
+  th{
+    white-space: nowrap;
+  }
+  .graphic{
+    width: 192px;
+    height: 200px;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+#search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.typeahead{
+  width: 400px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  outline: none;
+  border: 2px inset;
+  @include border-radius(8px);
+}
+.typeahead:focus{
+  @include border-top-radius(8px);
+}
+.tt-menu {
+  width: 400px;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 2px inset;
+}
+.tt-suggestion{
+  padding: 3px 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.tt-suggestion:hover{
+  background-color: #0097cf;
+}
