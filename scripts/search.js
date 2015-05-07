@@ -14,3 +14,12 @@ $('#search .typeahead').typeahead(null, {
   limit: 10,
   source: cards.ttAdapter()
 });
+$('#search .typeahead').on('typeahead:selected', function (e, datum) {
+    gotocard(datum.cardno);
+}).on('typeahead:autocompleted', function (e, datum) {
+    gotocard(datum.cardno);
+});
+function gotocard(cardid)
+{
+  window.location.href = '/card/' + encodeURIComponent(cardid.toLowerCase().replace(/[\/_]/, '-'));
+}
