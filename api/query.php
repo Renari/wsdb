@@ -33,7 +33,7 @@ class Query
           $stmt->execute(array($input.'%'));
           $results = $stmt->fetchAll();
           $limit -= count($results);
-          $keywords = preg_split('| |', $input);
+          $keywords = explode(' ', $input);
           if(is_array($keywords))
             $keywords = array_map(function($v) { return '%'.$v.'%'; }, $keywords);
           //all keywords

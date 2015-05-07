@@ -38,6 +38,6 @@ class Parse{
   }
   public static function parsepath()
   {
-    return array_values(array_filter(preg_split('|\/|', $_SERVER['REQUEST_URI'])));
+    return array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
   }
 }
