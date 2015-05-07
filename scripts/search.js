@@ -8,13 +8,13 @@ var cards = new Bloodhound({
     wildcard: '%QUERY'
   },
 });
-$('#search .typeahead').typeahead(null, {
+$('.typeahead').typeahead(null, {
   name: 'cards',
   display: 'name',
   limit: 10,
   source: cards.ttAdapter()
 });
-$('#search .typeahead').on('typeahead:selected', function (e, datum) {
+$('.typeahead').on('typeahead:selected', function (e, datum) {
     gotocard(datum.cardno);
 }).on('typeahead:autocompleted', function (e, datum) {
     gotocard(datum.cardno);
