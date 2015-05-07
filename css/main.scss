@@ -45,11 +45,16 @@ body{
     text-align: center;
   }
 }
-#search{
+.index{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+.search{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 .typeahead{
   width: 400px;
