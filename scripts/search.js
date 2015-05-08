@@ -19,7 +19,7 @@ $('.typeahead').on('typeahead:selected', function (e, datum) {
 }).on('typeahead:autocompleted', function (e, datum) {
     gotocard(datum.cardno);
 });
-function gotocard(cardid)
+function gotocard(cardno)
 {
-  window.location.href = '/card/' + encodeURIComponent(cardid.toLowerCase().replace(/[\/_]/, '-'));
+  window.location.href = '/card/' + encodeURIComponent(cardno.toLowerCase().replace(/[\/_]/, '-'));
 }

@@ -25,7 +25,7 @@ class Query
           $limit = self::$limit;
           $input = urldecode($path[2]);
           //exact match
-          $stmt = $db->prepare('SELECT * FROM
+          $stmt = $db->prepare('SELECT `cardno`, `name` FROM
             `ws_cards` m1 WHERE `name` LIKE ? AND `cardno` =
             (SELECT MIN(m2.cardno) FROM `ws_cards` m2 WHERE m1.name = m2.name)
             LIMIT '.$limit);
@@ -39,7 +39,7 @@ class Query
           //all keywords
           if($limit > 0 && count($keywords) > 1)
           {
-            $query = 'SELECT * FROM `ws_cards` m1 WHERE ';
+            $query = 'SELECT `cardno`, `name` FROM `ws_cards` m1 WHERE ';
             for ($i=0; $i < count($keywords); $i++) {
               $query .= '`name` LIKE ? AND ';
             }
@@ -67,7 +67,7 @@ class Query
           //any keywords
           if ($limit > 0)
           {
-            $query = 'SELECT * FROM `ws_cards` m1 WHERE `name` LIKE ? ';
+            $query = 'SELECT `cardno`, `name` FROM `ws_cards` m1 WHERE `name` LIKE ? ';
             for ($i=1; $i < count($keywords); $i++) {
               $query .= 'OR `name` LIKE ? ';
             }
