@@ -4,7 +4,9 @@ Query::main();
 class Query
 {
   //used to limit the results returned by a query
-  private static $limit = 10;
+  private static const $limit = 10;
+  //maximum allowed keywords
+  private static const $maxkeyword = 10;
   public static function main()
   {
     $settings = parse_ini_file('../settings.ini', true);
@@ -34,6 +36,8 @@ class Query
           $results = $stmt->fetchAll();
           $limit -= count($results);
           $keywords = explode(' ', $input);
+          if (count($keywords) > self::$maxkeyword)
+            $keywords = array_splice($keywords, 0, self::$maxkeyword);
           if(is_array($keywords))
             $keywords = array_map(function($v) { return '%'.$v.'%'; }, $keywords);
           //all keywords
