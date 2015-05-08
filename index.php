@@ -42,7 +42,15 @@ class Site{
       {
         case "card":
           $cardno = Card::tocardno($path[1]);
-          $stmt = self::$db->prepare('SELECT * FROM `ws_cards` WHERE `cardno` = ?');
+          $stmt = self::$db->prepare('SELECT 
+            wc.cardno cardno, wc.name name, wc.kana kana, wc.rarity rarity, wc.side side, wc.color color,
+            wc.level level, wc.cost cost, wc.power power, wc.soul soul, wc.triggers triggers, wc.traits traits,
+            wc.text text, wc.flavor flavor, wc.locale locale, CASE
+            WHEN wc.locale = "en" THEN we.NAME
+            WHEN wc.locale = "jp" THEN wj.NAME
+            END expansion FROM ws_cards wc
+            LEFT JOIN ws_ensets we ON wc.expansion = we.id
+            LEFT JOIN ws_jpsets wj ON wc.expansion = wj.id WHERE wc.cardno = ?');
           $stmt->execute(array($cardno));
           $card = $stmt->fetch();
           $card = new Card($card);
