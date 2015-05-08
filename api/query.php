@@ -4,9 +4,9 @@ Query::main();
 class Query
 {
   //used to limit the results returned by a query
-  private static const $limit = 10;
+  const LIMIT = 10;
   //maximum allowed keywords
-  private static const $maxkeyword = 10;
+  const MAXKEYWORD = 10;
   public static function main()
   {
     $settings = parse_ini_file('../settings.ini', true);
@@ -24,7 +24,7 @@ class Query
       switch($path[1])
       {
         case 'search':
-          $limit = self::$limit;
+          $limit = self::LIMIT;
           $input = urldecode($path[2]);
           //exact match
           $stmt = $db->prepare('SELECT `cardno`, `name` FROM
@@ -36,8 +36,8 @@ class Query
           $results = $stmt->fetchAll();
           $limit -= count($results);
           $keywords = explode(' ', $input);
-          if (count($keywords) > self::$maxkeyword)
-            $keywords = array_splice($keywords, 0, self::$maxkeyword);
+          if (count($keywords) > self::MAXKEYWORD)
+            $keywords = array_splice($keywords, 0, self::MAXKEYWORD);
           if(is_array($keywords))
             $keywords = array_map(function($v) { return '%'.$v.'%'; }, $keywords);
           //all keywords
@@ -66,7 +66,7 @@ class Query
             }, $results));
             $stmt->execute($param);
             $results = array_merge($results, $stmt->fetchAll());
-            $limit = self::$limit - count($results);
+            $limit = self::LIMIT - count($results);
           }
           //any keywords
           if ($limit > 0)
