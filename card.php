@@ -45,4 +45,8 @@ class Card{
   {
     return get_object_vars($this);
   }
+  public function getlocale()
+  {
+    return $this->locale;
+  }
 }

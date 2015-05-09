@@ -1,0 +1,67 @@
+<table class="card">
+  <tr class="image">
+    <td class="graphic" rowspan="9"><img src="/cardimages/{{image|raw}}" alt="Card Image"><br>
+    </td>
+    <th>Card Name</th>
+    <td colspan="3">{{name|raw}}<br>
+      <span class="kana">{{kana|raw}}</span>
+    </td>
+  </tr>
+  <tr>
+    <th>Card No.</th>
+    <td>{{cardno|raw}}</td>
+    <th>Rarity</th>
+    <td>{{rarity|raw}}</td>
+  </tr>
+  <tr>
+    <th>Expansion</th>
+    <td>{{expansion|raw}}</td>
+    <th>Side</th>
+    <td>{{side|raw}}</td>
+  </tr>
+  <tr>
+    <th>Card Type</th>
+    <td>{{type|raw}}</td>
+    <th>Color</th>
+    <td>{{color|raw}}</td>
+  </tr>
+  <tr>
+    <th>Level</th>
+    <td>{{level|raw}}</td>
+    <th>Cost</th>
+    <td>{{cost|raw}}</td>
+  </tr>
+  <tr>
+    <th>Power</th>
+    <td>{{power|raw}}</td>
+    <th>Soul</th>
+    <td>{{soul|raw}}</td>
+  </tr>
+  <tr>
+    <th>Trigger</th>
+    <td>
+      {% if triggers is defined %}
+        {% for trigger in triggers %}
+          <img src="/images/{{trigger|raw}}.gif">
+        {% endfor %}
+      {% endif %}
+    </td>
+    <th>Traits</th>
+    <td>
+      {% if traits is defined %}
+        {{traits[0]|raw}}
+        {% for i in range(1, traits|length-1) %}
+          &nbsp;・&nbsp;{{traits[i]|raw}}
+        {% endfor %}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>Text</th>
+    <td colspan="3">{{text|raw}}<br></td>
+  </tr>
+  <tr>
+    <th>Flavor Text</th>
+    <td colspan="3">{{flavor|raw}}<br></td>
+  </tr>
+</table>

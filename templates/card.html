@@ -1,59 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ cards[0]['name'] }}{% endblock %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+{% block content %}
 <div class="search">
   <input class="typeahead" type="text" placeholder="Search...">
 </div>
-<div class="card">
-  <table>
-    <tr class="image">
-      <td class="graphic" rowspan="9"><img src="/cardimages/{image}" alt="Card Image"><br>
-      </td>
-      <th>Card Name</th>
-      <td colspan="3">{name}<br>
-        <span class="kana">{kana}</span>
-      </td>
-    </tr>
-    <tr>
-      <th>Card No.</th>
-      <td>{cardno}</td>
-      <th>Rarity</th>
-      <td>{rarity}</td>
-    </tr>
-    <tr>
-      <th>Expansion</th>
-      <td>{expansion}</td>
-      <th>Side</th>
-      <td>{side}</td>
-    </tr>
-    <tr>
-      <th>Card Type</th>
-      <td>{type}</td>
-      <th>Color</th>
-      <td>{color}</td>
-    </tr>
-    <tr>
-      <th>Level</th>
-      <td>{level}</td>
-      <th>Cost</th>
-      <td>{cost}</td>
-    </tr>
-    <tr>
-      <th>Power</th>
-      <td>{power}</td>
-      <th>Soul</th>
-      <td>{soul}</td>
-    </tr>
-    <tr>
-      <th>Trigger</th>
-      <td>{triggers}[rep:<img src="/images/{elem}.gif">]</td>
-      <th>Traits</th>
-      <td>{traits}[del:・]</td>
-    </tr>
-    <tr>
-      <th>Text</th>
-      <td colspan="3">{text}<br></td>
-    </tr>
-    <tr>
-      <th>Flavor Text</th>
-      <td colspan="3">{flavor}<br></td>
-    </tr>
-  </table>
+<div id="tabs" class="tabbable tabs-left">
+        <ul>
+          {% for i in range(0, cards|length-1) %}
+          <li><a href="#tab{{i+1}}" data-toggle="tab">{{ cards[i]['locale'] }}</a></li>
+          {% endfor %}
+        </ul>
+  <div class="tab-content">
+    {% for i in range(0, cards|length-1) %}
+    <div class="tab-pane" id="tab{{i+1}}">{% include "cardblock.html" with cards[i] %}</div>
+    {% endfor %}
+  </div>
 </div>
+{% endblock %}
+{% block scripts %}
+{{ parent() }}
+<script src="/scripts/jquery.bootstrap.wizard.min.js"></script>
+<script>
+  $('#tabs').bootstrapWizard({'tabClass': 'nav nav-tabs'});
+</script>
+{% endblock %}

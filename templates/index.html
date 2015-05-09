@@ -1,5 +1,11 @@
-<div class="index">
-  <div class="search">
-    <input class="typeahead" type="text" placeholder="Search...">
-  </div>
+{% extends "base.html" %}
+
+{% block title %}Weiss Schwarz Database{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+<div class="search">
+  <input class="typeahead" type="text" placeholder="Search...">
 </div>
+{% endblock %}

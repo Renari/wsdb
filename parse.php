@@ -2,16 +2,13 @@
 class Parse{
   public static function parsetemplate($template, $array)
   {
+    krumo($array);
     $html = file_get_contents('./templates/'.$template.'.html');
-    if (gettype($array) == 'object' && get_class($array) == 'Card')
-    {
-      $array = $array->getvars();
-    }
     foreach($array as $key => $element)
     {
       if (is_array($element))
       {
-        preg_match('|\{'.$key.'\}\[(\w*?):(.*?)\]|', $html, $matches);
+        preg_match('#\{(?:\w*?\|\|)?'.$key.'(?:\|\|\w*)?\}\[(\w*?):(.*?)\]#', $html, $matches);
         switch($matches[1])
         {
             case "del":
@@ -28,12 +25,16 @@ class Parse{
               }
               $html = preg_replace('|\{'.$key.'\}\[.*?\]|', $output, $html);
               break;
+            case "temp":
+              $html = preg_replace('#\{(?:\w*?\|\|)?'.$key.'(?:\|\|\w*)?\}\[(\w*?):(.*?)\]#',
+                self::parseTemplate($matches[2], $element), $html, 1);
+              break;
         }
       }
-      else if(!is_numeric($array))
+      else
         $html = preg_replace('|\{'.$key.'\}(?:\[.*?\])?|', $element, $html);
     }
-    $html = preg_replace('|{.*?}|', '', $html);
+    $html = preg_replace('|{.*?}(\[.*?\])?|', '', $html);
     return $html;
   }
   public static function parsepath()
