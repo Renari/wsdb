@@ -40,7 +40,7 @@
   <tr>
     <th>Trigger</th>
     <td>
-      {% if triggers is defined %}
+      {% if triggers is defined and triggers|length > 0 %}
         {% for trigger in triggers %}
           <img src="/images/{{trigger|raw}}.gif">
         {% endfor %}
@@ -48,7 +48,7 @@
     </td>
     <th>Traits</th>
     <td>
-      {% if traits is defined %}
+      {% if traits is defined and traits|length > 0 %}
         {{traits[0]|raw}}
         {% for i in range(1, traits|length-1) %}
           &nbsp;・&nbsp;{{traits[i]|raw}}
