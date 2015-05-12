@@ -55,14 +55,14 @@ input{
   outline: none;
   padding: 5px;
   margin: 0;
-  @include border-radius(4px);
+  @include border-radius(8px);
 }
 .typeahead[type="text"]:focus{
-  @include border-top-radius(4px);
+  @include border-top-radius(8px);
   margin: 0;
 }
 .tt-menu {
-  width: 408px;
+  width: 400px;
   max-height: 150px;
   overflow-y: auto;
   border: 2px inset;

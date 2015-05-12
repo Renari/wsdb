@@ -1,7 +1,7 @@
 <?php
 require_once('card.php');
 require_once('parse.php');
-require_once('twig/Autoloader.php');
+require_once('Twig/Autoloader.php');
 Site::main();
 
 class Site{
@@ -13,8 +13,6 @@ class Site{
     if(self::$settings['debug'])
     {
       require_once('debug/krumo/krumo.php');
-      //debug stylesheet
-      //self::$cssfiles[] = 'debug.css';
     }
     $tempvars['settings'] = self::$settings;
     //dateabase
@@ -27,7 +25,7 @@ class Site{
     //page output
     Twig_Autoloader::register();
     $loader = new Twig_Loader_Filesystem('templates');
-    $twigop['cache'] = './cache';
+    $twigop['cache'] = getcwd()+'cache';
     if (self::$settings['debug'])
     {
       $twigop['cache'] = false;
