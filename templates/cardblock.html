@@ -50,9 +50,9 @@
     <td>
       {% if traits is defined and traits|length > 0 %}
         {{traits[0]|raw}}
-        {% for i in range(1, traits|length-1) %}
-          &nbsp;・&nbsp;{{traits[i]|raw}}
-        {% endfor %}
+        {% if traits|length > 1 %}
+          &nbsp;・&nbsp;{{traits[1]|raw}}
+        {% endif %}
       {% endif %}
     </td>
   </tr>
