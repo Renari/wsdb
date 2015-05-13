@@ -99,3 +99,12 @@ input{
 .text{
   padding-left:10px;
 }
+.card{
+  th, td{
+    padding: 5px;
+    border: 1px solid #FFF;
+  }
+  th{
+    white-space: nowrap;
+  }
+}

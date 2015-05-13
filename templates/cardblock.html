@@ -3,70 +3,72 @@
     <img src="/cardimages/{{image|raw}}" alt="Card Image">
   </div>
   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Card Name</div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">{{name|raw}}<br>
-        <span class="kana">{{kana|raw}}</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Expansion</div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">{{expansion|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Card No.</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{cardno|raw}}</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Rarity</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{rarity|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Card Type</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{type|raw}}</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Color</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{color|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Level</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{level|raw}}</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Cost</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{cost|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Power</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{power|raw}}</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Soul</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{soul|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Trigger</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        {% if triggers is defined and triggers|length > 0 %}
-        {% for trigger in triggers %}
-        <img src="/images/{{trigger|raw}}.gif">
-        {% endfor %}
-        {% endif %}
-      </div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Side</div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{side|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Traits</div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-        {% if traits is defined and traits|length > 0 %}
-        {{traits[0]|raw}}
-        {% if traits|length > 1 %}
-        &nbsp;・&nbsp;{{traits[1]|raw}}
-        {% endif %}
-        {% endif %}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Text</div>
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">{{text|raw}}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Flavor</div>
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">{{flavor|raw}}</div>
-    </div>
+    <table class="card">
+      <tr>
+        <th>Card Name</th>
+        <td colspan="3">{{name|raw}}<br>
+          <span class="kana">{{kana|raw}}</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Expansion</th>
+        <td colspan="3">{{expansion|raw}}</td>
+      </tr>
+      <tr>
+        <th>Card No.</th>
+        <td>{{cardno|raw}}</td>
+        <th>Rarity</th>
+        <td>{{rarity|raw}}</td>
+      </tr>
+      <tr>
+        <th>Card Type</th>
+        <td>{{type|raw}}</td>
+        <th>Color</th>
+        <td>{{color|raw}}</td>
+      </tr>
+      <tr>
+        <th>Level</th>
+        <td>{{level|raw}}</td>
+        <th>Cost</th>
+        <td>{{cost|raw}}</td>
+      </tr>
+      <tr>
+        <th>Power</th>
+        <td>{{power|raw}}</td>
+        <th>Soul</th>
+        <td>{{soul|raw}}</td>
+      </tr>
+      <tr>
+        <th>Trigger</th>
+        <td>
+          {% if triggers is defined and triggers|length > 0 %}
+          {% for trigger in triggers %}
+          <img src="/images/{{trigger|raw}}.gif">
+          {% endfor %}
+          {% endif %}
+        </td>
+        <th>Side</th>
+        <td>{{side|raw}}</td>
+      </tr>
+      <tr>
+        <th>Traits</th>
+        <td colspan="3">
+          {% if traits is defined and traits|length > 0 %}
+          {{traits[0]|raw}}
+          {% if traits|length > 1 %}
+          &nbsp;・&nbsp;{{traits[1]|raw}}
+          {% endif %}
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <th>Text</th>
+        <td colspan="3">{{text|raw}}</td>
+      </tr>
+      <tr>
+        <th>Flavor</th>
+        <td colspan="3">{{flavor|raw}}</td>
+      </tr>
+    </table>
   </div>
 </div>
