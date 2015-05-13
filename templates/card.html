@@ -5,19 +5,23 @@
 {{ parent() }}
 {% endblock %}
 {% block content %}
-<div class="search">
-  <input class="typeahead" type="text" placeholder="Search...">
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-5 col-lg-offset-4 col-lg-5 search">
+    <input class="typeahead input" type="text" placeholder="Search...">
+  </div>
 </div>
-<div id="tabs" class="tabbable tabs-left">
-        <ul>
-          {% for i in range(0, cards|length-1) %}
-          <li><a href="#tab{{i+1}}" data-toggle="tab">{{ cards[i]['locale'] }}</a></li>
-          {% endfor %}
-        </ul>
-  <div class="tab-content">
-    {% for i in range(0, cards|length-1) %}
-    <div class="tab-pane" id="tab{{i+1}}">{% include "cardblock.html" with cards[i] %}</div>
-    {% endfor %}
+<div class="row col-xs-11 col-sm-11 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+  <div id="tabs" class="tabbable tabs-left">
+    <ul>
+      {% for i in range(0, cards|length-1) %}
+      <li><a href="#tab{{i+1}}" data-toggle="tab">{{ cards[i]['locale'] }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content">
+      {% for i in range(0, cards|length-1) %}
+      <div class="tab-pane" id="tab{{i+1}}">{% include "cardblock.html" with cards[i] %}</div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}

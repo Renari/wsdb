@@ -30,38 +30,24 @@ body{
 input{
   color: #000;
 }
-.card{
-  width: 650px;
-  table, th, td{
-    padding: 5px;
-  }
-  th{
-    white-space: nowrap;
-  }
-  .graphic{
-    width: 192px;
-    height: 200px;
-    vertical-align: middle;
-    text-align: center;
-  }
-}
 .search{
   text-align: center;
   padding: 40px;
 }
+.twitter-typeahead{
+  width: 100%;
+}
 .typeahead[type="text"]{
-  width: 400px;
+  width: 100%;
+  padding: 4px 8px;
   outline: none;
-  padding: 5px;
-  margin: 0;
   @include border-radius(8px);
 }
 .typeahead[type="text"]:focus{
   @include border-top-radius(8px);
-  margin: 0;
 }
 .tt-menu {
-  width: 400px;
+  width: 100%;
   max-height: 150px;
   overflow-y: auto;
   border: 2px inset;
@@ -77,17 +63,16 @@ input{
   background-color: #0097cf;
 }
 #tabs{
-  margin: 0 auto;
-  width: 698px;
   .nav-tabs{
-    li{
-      a{
-        min-width: 0;
-      }
+    li a{
+      min-width: 0;
     }
     margin: 0;
     border: none;
   }
+}
+.image{
+  text-align: center;
 }
 .tabs-left>.nav-tabs>li>a {
   margin-right: -1px;
@@ -110,4 +95,7 @@ input{
 }
 .tt-hint {
   color: #888;
+}
+.text{
+  padding-left:10px;
 }
