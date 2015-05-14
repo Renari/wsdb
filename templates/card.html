@@ -12,17 +12,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
-  <div id="tabs" class="tabbable tabs-left">
-    <ul>
-      {% for i in range(0, cards|length-1) %}
-      <li><a href="#tab{{i+1}}" data-toggle="tab">{{ cards[i]['locale'] }}</a></li>
-      {% endfor %}
-    </ul>
-    <div class="tab-content">
-      {% for i in range(0, cards|length-1) %}
-      <div class="tab-pane" id="tab{{i+1}}">{% include "cardblock.html" with cards[i] %}</div>
-      {% endfor %}
-    </div>
+      {% include "cardblock.html" %}
   </div>
 </div>
 </div>

@@ -1,73 +1,73 @@
-<div class="row">
-  <div class="col-xs-8 col-sm-8 col-md-3 col-lg-3 image">
-    <img src="/cardimages/{{image|raw}}" alt="Card Image">
+<div class="row cardblock">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 image">
+    <img src="/cardimages/{{card.image|raw}}" alt="Card Image">
   </div>
-  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
     <table class="card">
       <tr>
-        <th>Card Name</th>
-        <td colspan="3">{{name|raw}}<br>
-          <span class="kana">{{kana|raw}}</span>
+        <th>Name</th>
+        <td colspan="3">{{card.name|raw}}<br>
+          <span class="kana">{{card.kana|raw}}</span>
         </td>
       </tr>
       <tr>
         <th>Expansion</th>
-        <td colspan="3">{{expansion|raw}}</td>
+        <td colspan="3">{{card.expansion|raw}}</td>
       </tr>
       <tr>
-        <th>Card No.</th>
-        <td>{{cardno|raw}}</td>
+        <th>Number</th>
+        <td>{{card.cardno|raw}}</td>
         <th>Rarity</th>
-        <td>{{rarity|raw}}</td>
+        <td>{{card.rarity|raw}}</td>
       </tr>
       <tr>
-        <th>Card Type</th>
-        <td>{{type|raw}}</td>
+        <th>Type</th>
+        <td>{{card.type|raw}}</td>
         <th>Color</th>
-        <td>{{color|raw}}</td>
+        <td>{{card.color|raw}}</td>
       </tr>
       <tr>
         <th>Level</th>
-        <td>{{level|raw}}</td>
+        <td>{{card.level|raw}}</td>
         <th>Cost</th>
-        <td>{{cost|raw}}</td>
+        <td>{{card.cost|raw}}</td>
       </tr>
       <tr>
         <th>Power</th>
-        <td>{{power|raw}}</td>
+        <td>{{card.power|raw}}</td>
         <th>Soul</th>
-        <td>{{soul|raw}}</td>
+        <td>{{card.soul|raw}}</td>
       </tr>
       <tr>
         <th>Trigger</th>
         <td>
-          {% if triggers is defined and triggers|length > 0 %}
-          {% for trigger in triggers %}
+          {% if card.triggers is defined and card.triggers|length > 0 %}
+          {% for trigger in card.triggers %}
           <img src="/images/{{trigger|raw}}.gif">
           {% endfor %}
           {% endif %}
         </td>
         <th>Side</th>
-        <td>{{side|raw}}</td>
+        <td>{{card.side|raw}}</td>
       </tr>
       <tr>
         <th>Traits</th>
         <td colspan="3">
-          {% if traits is defined and traits|length > 0 %}
-          {{traits[0]|raw}}
-          {% if traits|length > 1 %}
-          &nbsp;・&nbsp;{{traits[1]|raw}}
+          {% if card.traits is defined and card.traits|length > 0 %}
+          {{card.traits[0]|raw}}
+          {% if card.traits|length > 1 %}
+          &nbsp;・&nbsp;{{card.traits[1]|raw}}
           {% endif %}
           {% endif %}
         </td>
       </tr>
       <tr>
         <th>Text</th>
-        <td colspan="3">{{text|raw}}</td>
+        <td colspan="3">{{card.text|raw}}</td>
       </tr>
       <tr>
         <th>Flavor</th>
-        <td colspan="3">{{flavor|raw}}</td>
+        <td colspan="3">{{card.flavor|raw}}</td>
       </tr>
     </table>
   </div>

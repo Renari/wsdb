@@ -66,15 +66,10 @@ class Site{
         $stmt = self::$db->prepare($relations);
         $stmt->execute(array($cardno));
         $altcard = $stmt->fetch();
-        $tempvars['cards'][] = $card->getvars();
+        $tempvars['card'] = $card->getvars();
         if($altcard)
         {
-          $stmt = self::$db->prepare($query);
-          $stmt->setFetchMode(PDO::FETCH_ASSOC);
-          $stmt->execute(array($altcard[0]));
-          $altcard = $stmt->fetch();
-          $altcard = new Card($altcard);
-          $tempvars['cards'][] = $altcard->getvars();
+          $tempvars['altcard'] = $altcard;
         }
         $template = $twig->loadTemplate('card.html');
         echo $template->render($tempvars);
