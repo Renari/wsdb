@@ -25,7 +25,7 @@ class Site{
     //page output
     Twig_Autoloader::register();
     $loader = new Twig_Loader_Filesystem('templates');
-    $twigop['cache'] = getcwd()+'cache';
+    $twigop['cache'] = getcwd().'/cache';
     if (self::$settings['debug'])
     {
       $twigop['cache'] = false;
