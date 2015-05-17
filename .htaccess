@@ -1,5 +1,5 @@
 FallbackResource /index.php
-<Files ~ "\.ini$">
+<Files ~ "\.json$">
 Order allow,deny
 Deny from all
 </Files>
