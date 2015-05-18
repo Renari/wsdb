@@ -354,7 +354,7 @@ class Hybrid_Auth
 		/*if( $mode == "PHP" ){
 			header( "Location: $url" ) ;
 		}
-		elseif( $mode == "JS" ){*/
+		elseif( $mode == "JS" ){
 			echo '<html>';
 			echo '<head>';
 			echo '<script type="text/javascript">';
@@ -365,8 +365,19 @@ class Hybrid_Auth
 			echo 'Redirecting, please wait...';
 			echo '</body>';
 			echo '</html>';
-		//}
-
+		}*/
+		?>
+		<!DOCTYPE html>
+		<html>
+		<head>
+		</head>
+		<body>
+			<script>
+				window.top.location.href="<?php echo $url ?>";
+			</script>
+		</body>
+		</html>
+		<?php
 		die();
 	}
 
