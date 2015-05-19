@@ -1,37 +1,38 @@
 function checkUsername(){
-  $.ajax({
-    method: "POST",
-    url: "/api/username",
-    data: {username: $('#username').val()}
-  }).done(function(data){
-    if (data == 'true')
-    {
-      usernameError(false);
-    }
+  if (validUsername()){
+    $.ajax({
+      method: "POST",
+      url: "/api/username",
+      data: {username: $('#username').val()}
+    }).done(function(data){
+      if (data == 'true'){
+        usernameError(false);
+      }
+      else{
+        usernameError(true);
+      }
   });
+  }
+  else{
+    usernameError(true);
+  }
 }
-function usernameError(error)
-{
-  if (error == true)
-  {
+function usernameError(error){
+  if (error == true){
     $('#usernamegroup').removeClass('has-success').addClass('has-error');
     $('#usernamefeedback').removeClass('glyphicon-ok').addClass('glyphicon-remove');
   }
-  else
-  {
+  else{
     $('#usernamegroup').removeClass('has-error').addClass('has-success');
     $('#usernamefeedback').removeClass('glyphicon-remove').addClass('glyphicon-ok');
   }
 }
-function validUsername()
-{
+function validUsername(){
     var patt = new RegExp('^[a-zA-Z]{3,15}$');
-    if (patt.test($('#username').val()))
-    {
+    if (patt.test($('#username').val())){
       return true;
     }
-    else
-    {
+    else{
       return false;
     }
 }
@@ -39,8 +40,7 @@ $('#login').click(function(){
   $('#loginmodal').modal('show');
 });
 $('#register').submit(function(event){
-  if (!validUsername())
-  {
+  if (!validUsername()){
     return false;
   }
   return true;
@@ -51,17 +51,9 @@ if ($('#register').length){
     keyboard: false
   });
   $('#username').keyup(function(){
-    if (!validUsername())
-    {
-      usernameError(true);
-    }
-    else
-    {
-      checkUsername();
-    }
+    checkUsername();
   });
-  if ($('#username').val())
-  {
+  if ($('#username').val()){
     checkUsername();
   }
 }
