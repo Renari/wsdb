@@ -28,6 +28,7 @@
           "id": "",
           "secret": ""
         },
+        "scope": "public_profile",
         "trustForwarded": false
       },
       "Steam": {
