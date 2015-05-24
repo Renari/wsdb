@@ -43,7 +43,7 @@
         <td>
           {% if card.triggers is defined and card.triggers|length > 0 %}
           {% for trigger in card.triggers %}
-          <img src="/images/{{trigger|raw}}.gif">
+          <img alt="{{trigger|raw}}" src="/images/{{trigger|raw}}.gif">
           {% endfor %}
           {% endif %}
         </td>
