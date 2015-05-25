@@ -49,4 +49,12 @@ class Card{
   {
     return $this->locale;
   }
+  public function getname()
+  {
+    return $this->name;
+  }
+  public function getcardno()
+  {
+    return $this->cardno;
+  }
 }

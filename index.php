@@ -100,7 +100,7 @@ class Site{
         $card = $stmt->fetch(PDO::FETCH_ASSOC);
         $card = new Card($card);
         //check for another language version
-        $relations = '';
+        $relations;
         switch($card->getlocale())
         {
           case 'en':
@@ -116,7 +116,16 @@ class Site{
         $tempvars['card'] = $card->getvars();
         if($altcard)
         {
-          $tempvars['altcard'] = $altcard;
+          $tempvars['altcard'] = Card::tourl($altcard[0]);
+        }
+        //get alternate rarities
+        $rarities = 'SELECT `cardno` FROM `ws_cards` WHERE `name` = ? AND `cardno` != ?';
+        $stmt = self::$db->prepare($rarities);
+        $stmt->execute(array($card->getname(), $card->getcardno()));
+        $altrarity = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($altrarity as $value) {
+          $value['cardlink'] = Card::tourl($value['cardno']);
+          $tempvars['altrarity'][] = $value;
         }
         $template = $twig->loadTemplate('card.html');
         echo $template->render($tempvars);
