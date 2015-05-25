@@ -75,6 +75,8 @@
     {% for rarity in altrarity %}
       <a href="/card/{{rarity.cardlink|raw}}"><span class="fa fa-asterisk" aria-hidden="true"> {{rarity.cardno|raw}}</span></a><br>
     {% endfor %}
-    <a href="/card/{{altcard|raw}}"><span class="fa fa-files-o" aria-hidden="true"> {% if card.locale == "en" %}JP{% else %}EN{% endif %} Card</span></a>
+    {% if altcard is defined %}
+      <a href="/card/{{altcard|raw}}"><span class="fa fa-files-o" aria-hidden="true"> {% if card.locale == "en" %}JP{% else %}EN{% endif %} Card</span></a>
+    {% endif %}
   </div>
 </div>
