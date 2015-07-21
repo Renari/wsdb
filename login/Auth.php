@@ -349,9 +349,7 @@ class Hybrid_Auth
 	public static function redirect( $url, $mode = "PHP" )
 	{
 		Hybrid_Logger::info( "Enter Hybrid_Auth::redirect( $url, $mode )" );
-		//For some reason php header redirects is terminating connections
-		//so I'm avoiding this problem until a better solution is found.
-		/*if( $mode == "PHP" ){
+		if( $mode == "PHP" ){
 			header( "Location: $url" ) ;
 		}
 		elseif( $mode == "JS" ){
@@ -365,7 +363,7 @@ class Hybrid_Auth
 			echo 'Redirecting, please wait...';
 			echo '</body>';
 			echo '</html>';
-		}*/
+		}
 		?>
 		<!DOCTYPE html>
 		<html>
