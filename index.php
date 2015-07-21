@@ -134,6 +134,10 @@ class Site{
         require_once( "login/Endpoint.php" );
         Hybrid_Endpoint::process();
         break;
+        case 'api':
+        require_once( "api.php" );
+	api::main($path, self::$db);
+        break;
       }
     }
     else

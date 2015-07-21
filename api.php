@@ -1,15 +1,20 @@
 <?php
-require_once('../parse.php');
-Query::main();
-class Query
+class api
 {
   //used to limit the results returned by a query
   const LIMIT = 10;
   //maximum allowed keywords
   const MAXKEYWORD = 10;
-  public static function main()
+  public static function main( $path = NULL, $db = NULL)
   {
-    $settings = json_decode(file_get_contents('../settings.json'), true);
+  if(is_null($path))
+  {
+    require_once('parse.php');
+    $path = Parse::parsepath();
+  }
+  if(is_null($db))
+  {
+    $settings = json_decode(file_get_contents('settings.json'), true);
     //dateabase
     $db = new PDO($settings['database']['driver'].':'.
     'host='   .$settings['database']['host'].';'.
@@ -18,7 +23,7 @@ class Query
     $settings['database']['username'],
     $settings['database']['password']
   );
-  $path = Parse::parsepath();
+  }
   if (isset($path[1]))
   {
     switch($path[1])
