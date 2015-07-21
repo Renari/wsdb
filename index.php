@@ -138,6 +138,9 @@ class Site{
         require_once( "api.php" );
 	api::main($path, self::$db);
         break;
+        default: //404
+        header('Location: /');
+        exit;
       }
     }
     else
