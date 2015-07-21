@@ -13,7 +13,11 @@
     "base_url": "http://localhost/login/process",
     "providers": {
       "Twitter": {
-        "enabled": true
+        "enabled": true,
+        "keys": {
+          "key": "",
+          "secret": ""
+        }
       },
       "Google": {
         "enabled": true,
