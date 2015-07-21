@@ -1,4 +1,5 @@
 FallbackResource /index.php
+DirectoryIndex index.php
 <Files ~ "\.json$">
 Order allow,deny
 Deny from all
