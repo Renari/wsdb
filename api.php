@@ -35,7 +35,7 @@ class api
       $stmt = $db->prepare('SELECT `cardno`, `name` FROM
         `ws_cards` m1 WHERE `name` LIKE ? AND `cardno` =
         (SELECT MIN(m2.cardno) FROM `ws_cards` m2 WHERE m1.name = m2.name)
-        LIMIT '.$limit);
+        ORDER BY m1.name LIMIT '.$limit);
       $stmt->setFetchMode(PDO::FETCH_ASSOC);
       $stmt->execute(array($input.'%'));
       $results = $stmt->fetchAll();
@@ -62,7 +62,7 @@ class api
           }
           $query .= ')';
         }
-        $query .= ' LIMIT '.$limit;
+        $query .= 'ORDER BY m1.name LIMIT '.$limit;
         $stmt = $db->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $param = array_merge($keywords,
@@ -90,7 +90,7 @@ class api
           }
           $query .= ')';
         }
-        $query .= ' LIMIT '.$limit;
+        $query .= 'ORDER BY m1.name LIMIT '.$limit;
         $stmt = $db->prepare($query);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $param = array_merge($keywords,
